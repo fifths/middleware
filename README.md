@@ -35,7 +35,7 @@ func main() {
 	router := httprouter.New()
 	m := middleware.New()
 	m.Use(testMiddleware)
-	router.GET("/test", Test)
+	router.GET("/test", m.Handle(Test))
 	router.GET("/test1", Test1)
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
